@@ -1,0 +1,123 @@
+  
+.warehouse-p {
+    display:flex;
+    flex-flow: wrap row;
+    align-items: center;
+    justify-content:space-evenly ;
+    column-gap: 20px;
+    row-gap: 20px;
+    text-align: center;
+    margin-top: -600px;
+    
+}
+
+
+
+.warehouse-c{
+    width: 550px;
+    height: 250px;
+   color:blue;
+   border: 2px solid red;
+   
+    
+}
+.warehouse-c-form{
+    width:550px;
+    height: 250px;
+    color:aquamarine;
+    border: 2px solid red;
+
+    
+}
+.btn:hover{
+    background-color:red ;
+
+    
+}
+.warehousre-container{
+    display:flex;
+    flex-flow: wrap row;
+    align-items: center;
+    justify-content:center ; 
+
+}
+.warehouse-needs-p{
+    display:flex;
+    flex-flow: wrap row;
+    align-items: center;
+    justify-content:space-evenly ;
+    column-gap: 20px;
+    row-gap: 20px;
+    
+   
+   
+}
+.warehouse-needs{
+    width:200px;
+    height: 200px;
+   color:black;
+   border: 2px solid red;
+   border-radius:25px;
+}
+.warehouse-needs:hover{
+    background-color: red;
+    
+}
+
+.warehouse-fulfillments-p{
+    display:flex;
+    flex-flow: wrap row;
+    align-items: center;
+    justify-content:space-evenly ;
+    column-gap:10px;
+    row-gap:10px;
+   
+
+   
+}
+.warehouse-fulfillments{
+    width:150px;
+    height:150px;
+   color:black;
+   border-radius:20px;
+}
+.warehouse-fulfillments:hover{
+    background-color: blue;
+    
+}
+.warehouse-journey-p{
+    display:flex;
+    flex-flow: wrap row;
+    align-items: center;
+    justify-content:space-evenly ;
+    column-gap:-20px;
+    row-gap:-20px;
+ 
+    
+}
+.warehouse-journey{
+    width:200px;
+    height:200px;
+   color:black;
+
+}
+.warehouse-plotform-works-p{
+    display:flex;
+    flex-flow: wrap row;
+    align-items: center;
+    justify-content:space-evenly ;
+    column-gap:20px;
+    row-gap:20px;
+}
+.warehouse-plotfom-works{
+    width:200px;
+    height:200px;
+   color:black;
+   border: 2px solid red;
+   border-radius:25px;
+
+}
+.warehouse-plotfom-works:hover{
+    background-color: red;
+    
+}

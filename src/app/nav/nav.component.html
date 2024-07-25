@@ -1,0 +1,111 @@
+<mat-sidenav-container class="sidenav-container" *ngIf="showHead" >
+  <mat-sidenav #sidenav class="nav-bar"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"  >
+    
+        
+        <div class="close-btn-container">
+          <button class="close-btn" (click)="sidenav.close()"><mat-icon>close</mat-icon></button>
+        </div>
+      <div class="greeting-head">Hi,{{data?.name }}</div>
+
+<div class="nav-item-container">
+    <mat-nav-list *ngFor="let Navitem of navdata" class="header-links" >
+      <li  
+      matTooltip="{{Navitem.navlist1}}"
+      matTooltipPosition="right"routerLink="/home" class="nav"  routerLinkActive="active"><mat-icon>home</mat-icon>
+    </li>
+   
+      <a matTooltip="{{Navitem.navlist2}}"
+      matTooltipPosition="right" class="nav" id="toggle"routerLinkActive="active" (click)="toggleOpenClosed()"><mat-icon>add_shopping_cart</mat-icon></a>
+      <div class="dropdown-content" *ngIf="isOpened" [ngClass]="{'show': isOpened}" [ngStyle]="{'height': isOpened ? 'auto' : '0px'}">
+        <li    routerLinkActive="active" routerLink="/b2c-orders">B2C</li>
+        <li  routerLink="/b2b-orders">B2B</li>
+      
+      </div>
+    
+      <li matTooltip="{{Navitem.navlist3}}"
+      matTooltipPosition="right" routerLink="/b2c-shipments/{{data?._id}}" class="nav" routerLinkActive="active"><mat-icon> local_shipping</mat-icon></li>
+      <li matTooltip="{{Navitem.navlist4}}"
+      matTooltipPosition="right" routerLink="/exception" class="nav" routerLinkActive="active"><mat-icon>exposure</mat-icon></li>
+      <li matTooltip="{{Navitem.navlist5}}"
+      matTooltipPosition="right" routerLink="/weightreco" class="nav" routerLinkActive="active">	<mat-icon>line_weight</mat-icon></li>
+      <li matTooltip="{{Navitem.navlist6}}"
+      matTooltipPosition="right" routerLink="/billing" class="nav" routerLinkActive="active">	<mat-icon>assignment</mat-icon></li>
+      <li matTooltip="{{Navitem.navlist7}}"
+      matTooltipPosition="right" routerLink="/reports/{{data?._id}}" class="nav" routerLinkActive="active"><mat-icon>report_problem</mat-icon></li>
+      <li matTooltip="{{Navitem.navlist8}}"
+      matTooltipPosition="right"  routerLink="/addon/{{data?._id}}" class="nav"><mat-icon>note_add</mat-icon></li>
+      <li matTooltip="{{Navitem.navlist9}}"
+      matTooltipPosition="right" routerLink="/settings/{{data?._id}}" class="nav" routerLinkActive="active"><mat-icon>settings</mat-icon></li>
+      <li matTooltip="{{Navitem.navlist10}}"
+      matTooltipPosition="right" class="nav" routerLink="/card/{{data?._id}}" routerLinkActive="active">	<mat-icon>contact_support</mat-icon></li>
+ 
+      
+      
+      
+      
+  
+      
+      
+      
+      
+    </mat-nav-list>
+  </div>
+    <mat-nav-list>
+    
+      
+      
+    </mat-nav-list>
+    
+  </mat-sidenav>
+  <mat-sidenav-content >
+ 
+    <mat-toolbar  style="height: 80px; z-index: 100;">
+
+    <button type="button"aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()" style="color: black; margin-right: 15px; display: flex;" >
+      <mat-icon  aria-label="Side nav toggle icon" style="width: 40px;height: 40px;color: black;">menu</mat-icon>
+    </button> 
+ 
+    
+
+    <!-- <img routerLink="/home" src="./assets/Joprodexcourier.png" alt="" style="width:260px;height: 80px;border-radius: 20px; margin-right: 10px;" > -->
+   
+ 
+  <span class="example-spacer"></span>
+  <mat-slide-toggle labelPosition="before" [formControl]="toggleControl"></mat-slide-toggle>
+
+  <button mat-raised-button color="primary" (click)="openDialog('3000ms', '1500ms')">Recharge</button>&nbsp;&nbsp;
+      
+  <img [matMenuTriggerFor]="menu" [src]="url ? url : 'https://imgs.search.brave.com/oFXJ_DaN4iZ5HeCIbOa_WqPKz-F8sW-tOuJbP6x4rjU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2Q0Lzll/LzExL2Q0OWUxMTBh/OWMyYzBiNzkwM2Uz/NDBiNTJjYTdkMjZl/LmpwZw'" width="60px" height="60px" style="border-radius: 100%;" > <br/> 
+  <mat-menu #menu="matMenu" style="width: 300px;">
+   <mat-card  style="width: 200px;">
+     <p style="display: flex;align-items: center;justify-content: center;">Hello,{{data?.name }}</p>
+   </mat-card>
+  
+   <button mat-menu-item routerLink="/login">Login</button>
+   <button mat-menu-item routerLink="/profile">Profile</button>
+   <button mat-menu-item>Settings</button>
+   <button mat-menu-item color="warn" (click)="onLogout()" >Logout</button>
+ </mat-menu>
+  <!-- <button mat-stroked-button style="color: rgb(84, 221, 84);" (click)="openSnackBar()">  <img width="20px" height="20px" src="../assets/whatsapp.png" alt=""> WhatsApp</button>&nbsp;&nbsp; -->
+
+
+
+
+
+</mat-toolbar>
+    <!-- Add Content Here -->
+ 
+    <router-outlet></router-outlet>
+   
+  
+  </mat-sidenav-content>
+  
+  
+
+</mat-sidenav-container>
+
+
+<router-outlet *ngIf="!showHead"></router-outlet>

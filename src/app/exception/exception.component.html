@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <div class="card-header">
+    <h4>NDR</h4>
+    <div class="group-1">
+       
+        <button class="btn btn-outline-dark btn-sm">Export</button> 
+        <button class="btn btn-outline-dark btn-sm">CSV Update</button>  
+        <button class="btn btn-outline-dark btn-sm">Filters</button> 
+        <button type="button" class="btn btn-outline-dark show_hide_filter btn-sm" style="display:none;"> Close </button>
+        <!-- <button class="btn btn-sm btn-dark" title="How to Process B2b Orders" data-toggle="modal" data-target="#exampleModalCenter"></button> -->
+    </div>
+  </div>
+  <div class="group">
+      <button class="btn" (click)="showByStatus('All')">All</button>
+      <button class="btn" >Action Required</button>
+      <button class="btn" (click)="showByAction('RE ATTEMPT')">Action Requested</button>
+      <button class="btn" (click)="showByStatus('DELIVERED')">Delivered</button>
+      <button class="btn" (click)="showByStatus('RTO')">RTO</button>
+  </div>
+  <div class="container-table">
+    <table class="table custom-table">
+      <thead class="thead-dark">
+        <tr>
+          <th><input type="checkbox"></th>
+          <th>CHANNEL</th>
+          <th>NDR DATE</th>
+          <th>ORDER</th>
+          <th>PRODUCT</th>
+          <th>PAYMENT</th>
+          <th>CUSTOMER</th>
+          <th>CARRIER</th>
+          <th>STATUS</th>
+          <th>TAGS</th>
+          <th>EXCEPTION INFO</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of  filteredOrderList">
+          <td><input type="checkbox"></td>
+          <td>{{ order.channel }}</td>
+          <td>{{ order.ndrDate }}</td>
+          <td>{{ order.order }}</td>
+          <td>{{ order.product }}</td>
+          <td>{{ order.payment }}</td>
+          <td>{{ order.customer }}</td>
+          <td>{{ order.carrier }}</td>
+          <td>{{ order.status }}</td>
+          <td>{{ order.tags }}</td>
+          <td>{{ order.exceptionInfo }}</td>
+          <td>{{ order.action }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="filteredOrderList.length === 0" class="alert alert-info mt-3 text-center">
+      No orders found.
+    </div>
+  </div>
+    
+</div>

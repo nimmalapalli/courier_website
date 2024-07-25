@@ -1,0 +1,56 @@
+h5{
+    padding: 20px 10px;
+    background-color: #ddd;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.header{
+   
+    background-color: #ddd;
+}
+.card{
+    margin-top: 10px;
+}
+input[type="text"],textarea,select{
+    display: block;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 7px;
+    width: 100%;
+    margin: 10px 0;
+    font-size: 17px;
+    color: #999;
+}
+input[type="checkbox"] {
+    display: inline;
+    margin: 0 4px;
+}
+a{
+    margin-left: 4px;
+}
+form{
+    margin: 10px 0 20px 0;
+}
+
+  @media (max-width:500px) {
+    .table {
+        overflow: auto;
+      }
+  }
+  
+  .forward-create{
+  
+    width: 100%;
+    padding: 2%;
+  }
+  mat-form-field{
+    width: 400px;
+    padding: 2%;
+  }
+.intro{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+   
+}

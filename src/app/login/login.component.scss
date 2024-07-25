@@ -1,0 +1,82 @@
+.signin-card{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    column-gap: 20px;
+    row-gap: 20px;
+    padding: 2%;
+   background-image: url('https://www.guadanews.es/fotos/108/PAQUETERIA_CLM_GUADANEWS.jpg');
+    height: 100%;
+}
+.form-field{
+    width: 250px;
+  
+}
+.card-l{
+    width: 400px;
+    height: 500px;
+}
+// .card-m{
+//   width: 600px;
+//   height: 400px;
+// }
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  .left {
+    left: 0;
+ 
+  }
+  
+  .right {
+    right: 0;
+  }
+  .img{
+    z-index: -1;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+
+
+      .btn-container{
+    
+        padding: 5%;
+      }
+
+      mat-progress-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+      }
+      mat-error{
+        font-size: 16px;
+        padding: -6px ;
+      }
+
+      .error{
+        padding:2%;
+      }
+      .fg-button{
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        padding-right: 100px;
+        text-decoration: none;
+        color: black;
+      }

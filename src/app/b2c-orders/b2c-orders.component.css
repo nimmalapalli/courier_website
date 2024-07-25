@@ -1,0 +1,23 @@
+
+
+tr:nth-child(even) {
+  background: #F5F5F5;
+}
+
+
+
+.container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 2%;
+}
+.sbt-btn{
+  margin: 10px;
+}
+.order-table{
+  padding: 2%;
+  width: 100%;
+overflow-x: auto;
+}

@@ -1,0 +1,9 @@
+
+
+<app-nav></app-nav>
+
+<div class="container"   *ngIf="loading$ | async">
+    <mat-progress-spinner 
+      [mode]="'indeterminate'"
+    
+    ></mat-progress-spinner></div>

@@ -1,0 +1,150 @@
+
+    <form action="" [formGroup]="orderForm">
+
+        <mat-card class="example-card">
+            <mat-card-header>
+              
+              <mat-card-title>Order Information </mat-card-title>
+
+
+            
+            </mat-card-header>
+            <div class="intro">
+              <mat-form-field appearance="outline">
+                <mat-label>User ID</mat-label>
+                <input matInput  formControlName="user_id"  value="{{user_id}}" readonly>
+               
+              
+              </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Order ID</mat-label>
+                <input matInput  formControlName="order"  value="{{orderId}}" readonly>
+               
+              
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Order Type</mat-label>
+                <mat-select id="paymenttype" required="" formControlName="orderType" placeholder="Order Type">
+                  <mat-option value="COD">COD</mat-option>
+                  <mat-option  value="prepaid" >prepaid</mat-option>
+             
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <mat-card-header>
+            <mat-card-title>Personal information</mat-card-title>
+            </mat-card-header>
+            <div class="intro">
+               
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" value="" formControlName="fname">
+               
+              
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput   placeholder="Last Name" value="" formControlName="lname" >
+               
+            
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input matInput placeholder="Company Name" value="" formControlName="companyName" >
+               
+             
+              </mat-form-field>
+</div>
+<div class="intro">
+    <mat-form-field appearance="outline">
+      <mat-label>Shipping Address</mat-label>
+      <input matInput  placeholder="Shipping Address" formControlName="Address">
+     
+    
+    </mat-form-field>
+</div>
+
+    <div class="intro">
+    <mat-form-field appearance="outline">
+      <mat-label>Pin Code</mat-label>
+      <input matInput placeholder="Pin Code" (keyup)="handle($event)" formControlName="pincode" >
+     
+  
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+        <input matInput  placeholder="City" value="{{data?.Name}}" formControlName="city" >
+       
+     
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input matInput placeholder="State" value="{{data?.State}}" formControlName="state" >
+       
+     
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>phone</mat-label>
+        <input matInput placeholder="Phone" value="" formControlName="phone" >
+       
+     
+      </mat-form-field>
+ 
+</div>
+<mat-card-header>
+<mat-card-title>Package Information</mat-card-title>
+</mat-card-header>
+<div class="intro">
+
+    <mat-form-field appearance="outline">
+        <mat-label>product</mat-label>
+        <input matInput placeholder="product" value="" formControlName="product">
+       
+     
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Weight</mat-label>
+        <input matInput  placeholder="in grams" value="" formControlName="weight">
+       
+     
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Weight</mat-label>
+        <input matInput  placeholder="in grams" value="" formControlName="payment">
+       
+     
+      </mat-form-field>
+  
+</div>
+<div class="intro">
+  
+   
+      <mat-form-field appearance="outline">
+        <mat-label>length</mat-label>
+        <input matInput  formControlName="length"  placeholder="CM">
+       
+     
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>width</mat-label>
+        <input matInput  formControlName="width" placeholder="CM">
+       
+     
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>width</mat-label>
+        <input matInput  formControlName="height" placeholder="CM" >
+       
+     
+      </mat-form-field>
+      <button type="submit" (click)="SubmitOrderForm()" mat-button>submit</button>
+</div>
+          
+         
+          </mat-card>
+
+       
+
+
+</form>
+    

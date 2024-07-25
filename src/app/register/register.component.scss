@@ -1,0 +1,34 @@
+
+  
+  .example-full-width {
+    width: 300px;
+  }
+  .example-form{
+  padding: 2%;
+  }
+
+ 
+  .register-child{
+    width: 400px;
+  
+  }
+  .register-parent{
+    display: flex;
+    flex-flow: wrap row ;
+    align-items: center;
+    justify-content: flex-end;
+    background: url('https://static.vecteezy.com/system/resources/previews/012/258/883/non_2x/courier-with-food-bag-using-retro-motorbike-on-street-blue-background-for-delivery-concept-online-delivery-vector.jpg');
+   height: 100%;
+   padding: 2%;
+  }
+  .upload-parent{
+    display: flex;
+    flex-flow: wrap column ;
+    align-items: center;
+    justify-content: center;
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+
+
+  

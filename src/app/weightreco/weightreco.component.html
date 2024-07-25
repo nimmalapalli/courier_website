@@ -1,0 +1,49 @@
+<div class="card-header">
+    <h4>Weight Reconciliation</h4>
+    <div class="group-1">
+       
+        <button class="btn btn-outline-dark btn-sm">Export</button> 
+        <button class="btn btn-outline-dark btn-sm">CSV Update</button>  
+        <button class="btn btn-outline-dark btn-sm">Filters</button> 
+        <button type="button" class="btn btn-outline-dark show_hide_filter btn-sm" style="display:none;"> Close </button>
+        <!-- <button class="btn btn-sm btn-dark" title="How to Process B2b Orders" data-toggle="modal" data-target="#exampleModalCenter"></button> -->
+    </div>
+  </div>
+  <div class="group">
+      <button class="btn" (click)="showByStatus('All')">All</button>
+      <button class="btn" >Action Required</button>
+      <button class="btn" >Accepted</button>
+      <button class="btn" (click)="showByStatus('Dispute Closed')">Open Disputes</button>
+      <button class="btn" (click)="showByStatus('Dispute Open')">Closed Disputes</button>
+  </div>
+<div class="container-table">
+    <table class="table">
+        <thead>
+          <tr>
+            <th><input type="checkbox"></th>
+            <th>Weight Applied Date</th>
+            <th>AWB Number</th>
+            <th>Order ID</th>
+            <th>Entered Weight</th>
+            <th>Applied Weight</th>
+            <th>Weight Charges</th>
+            <th>Product</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of filteredOrderList">
+            <td><input type="checkbox"></td>
+            <td>{{ order.weightAppliedDate }}</td>
+            <td>{{ order.awbNumber }}</td>
+            <td>{{ order.orderId }}</td>
+            <td>{{ order.enteredWeight }}</td>
+            <td>{{ order.appliedWeight }}</td>
+            <td>{{ order.weightCharges }}</td>
+            <td>{{ order.product }}</td>
+            <td><button class="btn btn-info">{{ order.status }}</button></td>
+          </tr>
+        </tbody>
+      </table>
+      
+</div>

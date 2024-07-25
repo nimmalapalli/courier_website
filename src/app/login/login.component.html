@@ -1,0 +1,50 @@
+<div class="signin-card">
+
+
+<mat-card class="card-l">
+  <img height="180px" src="" alt="" >
+        <form class="example-form" [formGroup]="loginForm" >
+          <div class="btn-container">
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label>Enter your email</mat-label>
+              <input type="email" matInput placeholder="pat@example.com" formControlName="email"  >
+            
+            </mat-form-field>
+            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="error">
+              <mat-error  *ngIf="loginForm.get('email')?.hasError('required')">Email is <strong>required</strong>.</mat-error>
+              <mat-error  *ngIf="loginForm.get('email')?.hasError('pattern')">Email must be a valid email address</mat-error>
+  
+            </div>
+          <mat-form-field  class="form-field" appearance="outline">
+            <mat-label>Enter your password</mat-label>
+            <input type="password" matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+            </button>
+          </mat-form-field>
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" >
+            <mat-error  *ngIf="loginForm.get('password')?.hasError('required')">Password is <strong>required</strong>.</mat-error>
+           
+
+          </div>
+          <br>
+       <a class="fg-button" routerLink="forgetpassword" >forgetpassword </a>
+       <br>
+            <br>
+
+                <button mat-raised-button color="primary" (click)="login()">Login</button>  <br><br>
+                <p>Don't have account register here &nbsp;<a routerLink="/register" style="text-decoration: none;">Register here</a></p>
+              </div>
+              
+        
+             
+          </form>
+  
+  
+  </mat-card>
+
+
+</div>
+

@@ -1,0 +1,52 @@
+<div class="container">
+<h1 mat-dialog-title>payments</h1>
+
+<form action="" [formGroup]="paymentform">
+  <input type="text" formControlName="searchId" value="{{searchId}}">
+  <mat-form-field appearance="outline">
+    <mat-label>Ammount</mat-label>
+    <input matInput placeholder="Enter the ammount" formControlName="amount">
+   
+  
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="ruppee-container">
+    <mat-label>Rs</mat-label>
+  
+    <input matInput placeholder="Enter the ammount" formControlName="currency">
+  
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>reciept</mat-label>
+    <input matInput placeholder="Enter the content" formControlName="reciept">
+   
+  
+  </mat-form-field>
+
+
+</form>
+<br>
+
+<button type="button" class="close-btn" mat-raised-button color="accent" (click)="payment()" id="pay-button">Pay now</button>
+</div>
+
+
+
+<!-- <div class="wallet-payment-container">
+  <h2>Wallet Payment</h2> -->
+  <!-- <form (ngSubmit)="createWalletPayment()">
+    <div>
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" [(ngModel)]="amount" name="amount" required>
+    </div>
+    <div>
+      <label for="customerId">Customer ID:</label>
+      <input type="text" id="customerId" [(ngModel)]="customerId" name="customerId" required>
+    </div>
+    <div>
+      <label for="walletType">Wallet Type:</label>
+      <input type="text" id="walletType" [(ngModel)]="walletType" name="walletType" required>
+    </div>
+    <button type="submit">Pay with Wallet</button>
+  </form>
+</div> -->
