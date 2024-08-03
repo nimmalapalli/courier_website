@@ -26,6 +26,7 @@
 	z-index: 1000;
 	width: 140px;
 	background: #5f14e0;
+	overflow-y: hidden;
 
 }
 
@@ -152,7 +153,9 @@ a{
 	font-size: 20px;
 	font-family: 'Open Sans', sans-serif;
 }
-
+.navitem-heading{
+	font-size: 12px;
+}
 
 mat-icon{
 	padding-left:-20px;
@@ -160,10 +163,10 @@ mat-icon{
 
 .header-links .active {
 
-	width: 50px !important;
-    height: 50px !important;
+	width: 55px !important;
+    height: 55px !important;
 	border:2px solid white !important;
-	border-radius: 100%;
+	border-radius: 10%;
 
   
   }
@@ -182,4 +185,12 @@ mat-menu{
 
 .name{
 	font-size: 10px;
+}
+.order-content{
+	padding: 5%;
+	font-size: 16px;
+	list-style: none;
+	color:white;
+	text-align: center;
+
 }

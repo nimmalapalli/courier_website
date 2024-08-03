@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { B2cOrdersComponent } from './b2c-orders.component';
+import { B2bOrdersComponent } from './b2b-orders.component';
 
-describe('B2cOrdersComponent', () => {
-  let component: B2cOrdersComponent;
-  let fixture: ComponentFixture<B2cOrdersComponent>;
+describe('B2bOrdersComponent', () => {
+  let component: B2bOrdersComponent;
+  let fixture: ComponentFixture<B2bOrdersComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: []
+      declarations: [B2bOrdersComponent]
     });
-    fixture = TestBed.createComponent(B2cOrdersComponent);
+    fixture = TestBed.createComponent(B2bOrdersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,118 @@
+
+
+.button-group{
+    display: flex;
+     justify-content: space-around;
+    
+    align-items: center;
+    padding: 10px 12px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+ }
+ .header-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    margin: 20px 0;
+    border-bottom: 1px solid #f4f4f4;
+    flex-wrap: wrap;
+ }
+ 
+ .btn{
+    margin-right: 10px;
+    display: inline-block;
+   
+ }
+ h4{
+    font-size: 1.3rem;
+    font-weight: 500;
+ }
+ i{
+    margin-right: 3px;
+    font-size: 18px;
+ }
+ .btns{
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 2px 2px 0 #999;
+    border-radius: 3px;
+    padding: 7px 22px;
+    font-size: 15.75px;
+    font-weight: 500;
+    color: #494a49;
+ }
+ /* Style for the dropdown */
+ .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+   
+ 
+  
+  /* Style for the dropdown content */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: -80px;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    
+    padding: 10px;
+  }
+  .btni{
+    background-color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #494a49;
+    padding: 10px 12px;
+  }
+  
+  
+  
+  
+  /* Hover effect for dropdown links */
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Show dropdown content on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .table{
+    overflow-x: auto;
+  }
+  th{
+   color: rgb(6, 39, 151);
+   font-size: 16px;
+  }
+ td{
+    font-size: 16px;
+    font-weight: 500;
+ }
+  .group>select{
+    height: 40px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #999;
+    padding: 10px 12px;
+  } 
+  @media (max-width:800px) {
+    .button-group,.rows{
+        
+         justify-content: flex-start;
+         gap: 10px 15px;
+       
+        padding: 10px 12px;
+        
+    }
+    .header-body{
+       
+        justify-content: flex-start;
+        
+      
+    }
+  }

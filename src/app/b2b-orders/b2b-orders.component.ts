@@ -1,5 +1,4 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewChecked, CUSTOM_ELEMENTS_SCHEMA, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -12,22 +11,63 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
-import { ForwardCreateComponent } from '../forward-create/forward-create.component';
 import { AuthService } from '../serices/auth.service';
 import { LoaderService } from '../serices/loader/loader.service';
 
-
 @Component({
-  selector: 'app-b2c-orders',
+  selector: 'app-b2b-orders',
   standalone: true,
   imports: [CommonModule, 
-  RouterOutlet, RouterModule,ReactiveFormsModule,MatFormFieldModule,MatButtonModule,MatMenuModule,MatGridListModule,MatIconModule,MatTableModule,ForwardCreateComponent,MatPaginatorModule],
+  RouterOutlet, RouterModule,ReactiveFormsModule,MatFormFieldModule,MatButtonModule,MatMenuModule,MatGridListModule,MatIconModule,MatTableModule,MatPaginatorModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './b2c-orders.component.html',
-  styleUrls: ['./b2c-orders.component.css']
+  templateUrl: './b2b-orders.component.html',
+  styleUrls: ['./b2b-orders.component.css']
 })
-export class B2cOrdersComponent implements OnInit {
-  displayedColumns: string[] = ['order', 'orderType','Address','city','companyName','fname','lname','length','width', 'product', 'payment', 'phone', 'state'];
+export class B2bOrdersComponent {
+  
+  // customers: any = [
+
+  //   {
+  //     channel: 'Online',
+  //     order: 'ORD001',
+  //     date: '2023-12-20',
+  //     product: 'Product A',
+  //     payment: 'Credit Card',
+  //     method: 'Online',
+  //     customer: 'John Doe',
+  //     phone: '123-456-7890',
+  //     weight: 1.5,
+  //     ivrStatus: 'Completed',
+  //     tags: 'Tag1',
+  //     status: 'Delivered'
+  //   },
+
+  // ];
+  // filteredCustomers: any = [];
+
+  // constructor() {
+  //   this.filteredCustomers = this.customers;
+  // }
+
+  // showOrdersByStatus(status: string): void {
+  //   if (status === 'All') {
+  //     this.filteredCustomers = this.customers;
+  //   } else {
+  //     this.filteredCustomers = this.customers.filter((customer: { status: string; }) => customer.status === status);
+  //   }
+  // }
+
+  // countOrdersByStatus(status: string): number {
+  //   return this.customers.filter((customer: { status: string; }) => customer.status === status).length;
+  // }
+
+  // noRecordsFound: boolean = false;
+
+  // // Method to check if there are no records
+  // checkNoRecords(): void {
+  //   this.noRecordsFound = this.customers.length === 0;
+  // }
+  displayedColumns: string[] = ['CHANNEL', 'orderType','Address','city','companyName','fname','lname','length','width', 'product', 'payment', 'phone', 'state'];
   orderData:any;
   profileData:any;
    searchForm!:FormGroup;
@@ -87,6 +127,5 @@ this.dataSource.paginator = this.paginator;
   })
   
  }
-
 
 }

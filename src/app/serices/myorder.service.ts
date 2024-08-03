@@ -17,5 +17,8 @@ export class MyorderService {
   CreateOrder(data:any):Observable<any>{
     return this.http.post(this.baseapi +`/createorder`,data);
   }
+  getallorders():Observable<any>{
+    return this.http.get(this.baseapi +`/getallpaymentDetails`);
+  }
 }
 

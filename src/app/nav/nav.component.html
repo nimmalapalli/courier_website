@@ -8,25 +8,34 @@
         <div class="close-btn-container">
           <button class="close-btn" (click)="sidenav.close()"><mat-icon>close</mat-icon></button>
         </div>
-      <div class="greeting-head">Hi,{{data?.name }}</div>
+      <div class="greeting-head">Hi,{{data?.name}}</div>
 
 <div class="nav-item-container">
     <mat-nav-list *ngFor="let Navitem of navdata" class="header-links" >
       <li  
       matTooltip="{{Navitem.navlist1}}"
       matTooltipPosition="right"routerLink="/home" class="nav"  routerLinkActive="active"><mat-icon>home</mat-icon>
+
     </li>
-   
+
       <a matTooltip="{{Navitem.navlist2}}"
       matTooltipPosition="right" class="nav" id="toggle"routerLinkActive="active" (click)="toggleOpenClosed()"><mat-icon>add_shopping_cart</mat-icon></a>
-      <div class="dropdown-content" *ngIf="isOpened" [ngClass]="{'show': isOpened}" [ngStyle]="{'height': isOpened ? 'auto' : '0px'}">
-        <li    routerLinkActive="active" routerLink="/b2c-orders">B2C</li>
-        <li  routerLink="/b2b-orders">B2B</li>
+      <div class="dropdown-content" *ngIf="isOpened" [ngClass]="{'show': isOpened}" [ngStyle]="{'height': isOpened ? 'auto' : '20px'}">
+        <li  class="order-content"  routerLinkActive="active" routerLink="/b2c-orders">B2C</li>
+        <li class="order-content" routerLink="/b2b-orders">B2B</li>
       
       </div>
     
       <li matTooltip="{{Navitem.navlist3}}"
-      matTooltipPosition="right" routerLink="/b2c-shipments/{{data?._id}}" class="nav" routerLinkActive="active"><mat-icon> local_shipping</mat-icon></li>
+      matTooltipPosition="right"  class="nav" routerLinkActive="active" (click)="toggleOpenClose1()"><mat-icon> local_shipping</mat-icon>
+    
+    </li>
+    <div class="dropdown-content" *ngIf="isOpen" [ngClass]="{'show': isOpen}" [ngStyle]="{'height': isOpen ? 'auto' : '20px'}">
+      <li  class="order-content"  routerLinkActive="active"  routerLink="/b2c-shipments">B2C</li>
+      <li class="order-content" routerLink="/b2b-shipments" >B2B</li>
+    
+    </div>
+  
       <li matTooltip="{{Navitem.navlist4}}"
       matTooltipPosition="right" routerLink="/exception" class="nav" routerLinkActive="active"><mat-icon>exposure</mat-icon></li>
       <li matTooltip="{{Navitem.navlist5}}"
@@ -74,12 +83,12 @@
    
  
   <span class="example-spacer"></span>
-  <mat-slide-toggle labelPosition="before" [formControl]="toggleControl"></mat-slide-toggle>
+  <mat-slide-toggle labelPosition="before" [formControl]="toggleControl"></mat-slide-toggle>&nbsp;&nbsp;
 
   <button mat-raised-button color="primary" (click)="openDialog('3000ms', '1500ms')">Recharge</button>&nbsp;&nbsp;
       
   <img [matMenuTriggerFor]="menu" [src]="url ? url : 'https://imgs.search.brave.com/oFXJ_DaN4iZ5HeCIbOa_WqPKz-F8sW-tOuJbP6x4rjU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2Q0Lzll/LzExL2Q0OWUxMTBh/OWMyYzBiNzkwM2Uz/NDBiNTJjYTdkMjZl/LmpwZw'" width="60px" height="60px" style="border-radius: 100%;" > <br/> 
-  <mat-menu #menu="matMenu" style="width: 300px;">
+  <mat-menu #menu="matMenu" >
    <mat-card  style="width: 200px;">
      <p style="display: flex;align-items: center;justify-content: center;">Hello,{{data?.name }}</p>
    </mat-card>

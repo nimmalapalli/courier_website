@@ -27,10 +27,5 @@ import { AuthService } from '../serices/auth.service';
   styleUrls: ['./billing.component.scss']
 })
 export class BillingComponent {
-  private breakpointObserver = inject(BreakpointObserver);
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  .pipe(
-    map(result => result.matches),
-    shareReplay()
-  );
+ 
 }

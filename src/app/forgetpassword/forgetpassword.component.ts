@@ -1,11 +1,20 @@
 
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { RegisterComponent } from '../register/register.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../serices/auth.service';
 
@@ -13,7 +22,7 @@ import { AuthService } from '../serices/auth.service';
   selector: 'app-forgetpassword',
   standalone: true,
   imports: [CommonModule, 
-  RouterOutlet, RouterModule],
+  RouterOutlet, RouterModule,ReactiveFormsModule,MatFormFieldModule,MatButtonModule,MatInputModule,MatCardModule,MatIconModule,MatMenuModule,MatGridListModule,MatIconModule,MatFormFieldModule,MatSelectModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './forgetpassword.component.html',
   styleUrls: ['./forgetpassword.component.scss']

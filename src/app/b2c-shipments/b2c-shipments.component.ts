@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { AfterViewChecked, CUSTOM_ELEMENTS_SCHEMA, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -12,68 +11,48 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
-import { ForwardCreateComponent } from '../forward-create/forward-create.component';
 import { AuthService } from '../serices/auth.service';
 import { LoaderService } from '../serices/loader/loader.service';
 @Component({
-  selector: 'app-weightreco',
+  selector: 'app-b2c-shipments',
   standalone: true,
   imports: [CommonModule, 
-  RouterOutlet, RouterModule,ReactiveFormsModule,MatFormFieldModule,MatButtonModule,MatMenuModule,MatGridListModule,MatIconModule,MatTableModule,ForwardCreateComponent,MatPaginatorModule],
+  RouterOutlet, RouterModule,ReactiveFormsModule,MatFormFieldModule,MatButtonModule,MatMenuModule,MatGridListModule,MatIconModule,MatTableModule,MatPaginatorModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './weightreco.component.html',
-  styleUrls: ['./weightreco.component.css']
+  templateUrl: './b2c-shipments.component.html',
+  styleUrls: ['./b2c-shipments.component.css']
 })
-export class WeightrecoComponent {
-  // constructor () {
-  //   this.filteredOrderList=this.orders
-  // }
-  orders: any = [
-    {
-      weightAppliedDate: '2023-11-14',
-      awbNumber: 'bluedart Express 76878769925',
-      orderId: '169873031',
-      enteredWeight: 'Dead Weight 200g LxBxH:1*1*1 Charged Slab 500g Volumetric Weight 0g',
-      appliedWeight: 'Applied Slab:1000g',
-      weightCharges: 'Forward:Rs.80 Charged to wallet:No',
-      product: 'DOX()',
-      status: 'Dispute Closed'
-    },
-    {
-      weightAppliedDate: '2023-11-14',
-      awbNumber: 'Bluedart Express',
-      orderId: '1698741049',
-      enteredWeight: 'Dead Weight 0.062g LxBxH:1*1*1 Charged Slab 500g Volumetric Weight 0g',
-      appliedWeight: 'Applied Slab:1000g',
-      weightCharges: 'Forward:Rs.80 Charged to walet:No',
-      product: 'POOJA COIN(COOPER)()',
-      status: 'Dispute Open'
-    },
-    {
-      weightAppliedDate: '2023-11-07',
-      awbNumber: 'Bluedartair IND RAS 81424044122',
-      orderId: '1698294443',
-      enteredWeight: 'Dead Weight 200g LxBxH:1*1*1 Charged Slab 500g Volumetric Weight 0g',
-      appliedWeight: 'Applied Slab:1000g',
-      weightCharges: 'forward:RS.81 Charged to wallet:Yes',
-      product: 'DOX()',
-      status: 'Dispute Closed'
-    },
-    // Add more orders here...
-  ];
-  filteredOrderList:any=[];
-  showByStatus(status:string): void {
-      if(status == 'All'){
-        this.filteredOrderList=[...this.orders]
-      }
-      else{
-        this.filteredOrderList=this.orders.filter((order: { status: string; }) => order.status === status);
-      }
-  }
-  showByAction(actionName: string): void {
-    this.filteredOrderList = this.orders.filter((order: { action: string; }) => order.action === actionName);
-  }
+export class B2cShipmentsComponent {
 
+  // shipments:any=[
+  //   { channel: 'Custom', orderID: 1699678797	, date: '2023/11/11',product:'BOOK',payment:500,pMethod:'PREPAID',customer:'RAVEEN',carrier:'Bluedart Surface',AWB:76888978806,status:'Delivered'},
+  //   { channel: 'Custom', orderID: 1699884092, date: '2023/11/13',product:'HOUSEHOLD	',payment:10000,pMethod:'PREPAID',customer:'SUSHMA',carrier:'Delhivery Surface 5 K.G',AWB:4270712113521,status:'In Transit'},
+  //   { channel: 'Custom', orderID: 1699938742, date: '2023/11/14',product:'MARBLE STATUE',payment:2000,pMethod:'PREPAID',customer:'PANKAJ KUMA...',carrier:'Delhivery Surface 5 K.G',AWB:4270712113871,status:'Cancelled'},
+  // ];
+ 
+  // fliterShipments:any=[];
+  // showFilters: boolean = false; 
+  // selectedStatus: string = ''; // Property to hold the selected status
+
+  // constructor () {
+  //   this.fliterShipments=[...this.shipments]
+  // }
+  // toggleFilters(): void {
+  //   this.showFilters = !this.showFilters;
+  // }
+  
+  // filterStatus(status:string) {
+
+  //   this.selectedStatus = status;
+  //   if (status === 'All') {
+  //     this.fliterShipments = this.shipments; // Show all shipments
+  //   } else {
+  //     this.fliterShipments = this.shipments.filter((shipment: { status: string; }) => shipment.status === status);
+  //   }
+  // }
+  // getStatusButtonClass(status: string): string {
+  //   return status === 'Cancelled' ? 'btn btn-outline-danger btn-sm ' : 'btn btn-outline-info btn-sm';
+  // }
   displayedColumns: string[] = ['order', 'orderType','Address','city','companyName','fname','lname','length','width', 'product', 'payment', 'phone', 'state'];
   orderData:any;
   profileData:any;
@@ -90,7 +69,6 @@ export class WeightrecoComponent {
     this.searchForm=this.sf.group({
       searchId:''
     })
-    this.filteredOrderList=this.orders
   
   }
   ngOnInit(){

@@ -1,15 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { ForwardCreateComponent } from '../forward-create/forward-create.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { AuthService } from '../serices/auth.service';
+import { LoaderService } from '../serices/loader/loader.service';
+import { MyorderService } from '../serices/myorder.service';
 
 @Component({
   selector: 'app-exception',
@@ -22,9 +25,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 })
 export class ExceptionComponent {
 
-  constructor() {
-    this.filteredOrderList=[...this.orders]
-  }
+  // constructor() {
+  //   this.filteredOrderList=[...this.orders]
+  // }
        
   orders = [
     {
@@ -80,4 +83,64 @@ export class ExceptionComponent {
   showByAction(actionName: string): void {
     this.filteredOrderList = this.orders.filter(order => order.action === actionName);
   }
+  displayedColumns: string[] = ['order', 'orderType','Address','city','companyName','fname','lname','length','width', 'product', 'payment', 'phone', 'state'];
+  orderData:any;
+  profileData:any;
+   searchForm!:FormGroup;
+   searchId:any;
+  dataSource = new MatTableDataSource<any>([]);
+  pageSizeOptions: number[] = [5, 10, 20];
+  pageSize = 5;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  hide = true;
+  loading$ = this.loader.loading$;
+
+   constructor(private od:MyorderService,private auth:AuthService,private sf:FormBuilder,public loader:LoaderService) {
+    this.searchForm=this.sf.group({
+      searchId:''
+    })
+    this.filteredOrderList=[...this.orders]
+  }
+  ngOnInit(){
+  this.getOrderlist();
+  this.getProfile();
+ 
+  
+  }
+
+  getProfile(){
+    this.auth.getprofile().subscribe((res:any)=>{
+      this.profileData=res['data'];
+       console.log(res)
+     
+
+       this.searchForm.controls['searchId'].setValue(this.profileData._id)
+       this.dataSource.filter =   this.profileData?._id;
+  
+       const filteredRows = this.dataSource.filteredData;
+       console.log(filteredRows?.length);
+      
+    })
+    } 
+    
+ getOrderlist(){
+ 
+    this.loader.show()
+ 
+ 
+  this.od.getData().subscribe((res:any)=>{
+    console.log(res);
+this.orderData=res;
+this.loader.hide()
+
+this.dataSource = new MatTableDataSource<any>(res.data);
+this.dataSource.paginator = this.paginator;
+
+
+
+
+ 
+  })
+  
+ }
 }

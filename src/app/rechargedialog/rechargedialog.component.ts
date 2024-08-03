@@ -63,28 +63,147 @@ export class RechargedialogComponent  {
     })
   }
   initiateRazorpayPayment(orderId: string, amount: number, currency: string) {
-    const options = {
-      key: 'rzp_test_VLSc7qRsFdhdrf',
+    const RazorpayOptions = {
+      key: 'rzp_live_c9gjRSnJZSE8xC',
       amount: amount,
       currency: currency,
-      name: 'Your Company Name',
+      name: 'joprodex private limited',
       description: 'Wallet Payment',
       order_id: orderId,
       handler: (response:any) => {
-       
+        this.verifyPayment(response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature);
       },
       prefill: {
-        name: 'Your Name',
-        email: 'your.email@example.com',
-        contact: '9999999999'
+        name: '',
+        email: 'nimmalapallinarendra@gmail.com',
+        contact: '8340932054'
       },
       theme: {
         color: '#F37254'
       }
     };
 
-    const rzp = new Razorpay(options);
-    rzp.open();
+     const successCallback= (paymentid:any) =>{
+     console.log(paymentid);
+    }
+    const failureCallback= (e:any) =>{
+     console.log(e);
+    }
+    Razorpay.open(RazorpayOptions,successCallback,failureCallback)
+   }
+
+
+    verifyPayment(paymentId: string, orderId: string, signature: string) {
+    this.auth.verifyPayment(paymentId, orderId, signature)
+      .subscribe((response:any) => {
+        if (response.status === 'Payment verified') {
+          alert('Payment Successful!');
+        } else {
+          alert('Payment Verification Failed!');
+        }
+      });
   }
- 
-}
+  }
+  // paynow(){
+
+  //   const RazorpayOptions = {
+  //    description:'Sample Razorpay Demo',
+  //    currency:'INR',
+  //    amount:this.paymentid.amount,
+  //    name:"",
+  //    key:'rzp_test_VLSc7qRsFdhdrf',
+  //    image:'',
+  //    order_id:this.paymentid.id,
+  //     prefill:{
+  //      name:this.Name,
+  //      email:this.Email,
+      
+   
+  //     },
+  //     theme:{
+  //      color:'#3498DB',
+  //      width:'400px'
+  //     },
+  //     modal:{
+  //      ondismiss: ()=>{
+  //        console.log('dismissed')
+  //      }
+  //     }
+  //   }
+    
+  //   const successCallback= (paymentid:any) =>{
+  //    console.log(paymentid);
+  //   }
+  //   const failureCallback= (e:any) =>{
+  //    console.log(e);
+  //   }
+  //   Razorpay.open(RazorpayOptions,successCallback,failureCallback)
+  //  }
+   
+  //  onButtonClick(value: string) {
+     
+  //    this.paymentform.get('amount')?.setValue(value);
+  //  }
+  // var razorpayObject = new Razorpay(RazorpayOptions);
+  // console.log(razorpayObject);
+  // razorpayObject.on('payment.failed', function (response:any){
+  //       console.log(response);
+  //       alert("This step of Payment Failed");
+  // });
+  
+  // (document.getElementById('pay-button')as HTMLElement).onclick = function(e){
+    
+  //     razorpayObject.open();
+  //     e.preventDefault();
+  // }
+  // }
+  // amount!: number;
+  // currency: string = 'INR';
+  // customerId!: string;
+  // walletType!: string;
+
+  // constructor(private auth:AuthService) {}
+
+  // createWalletPayment() {
+  //   this.auth.createWalletPayment(this.amount, this.currency, this.customerId, this.walletType)
+  //     .subscribe((response:any) => {
+  //       this.initiateRazorpayPayment(response.id, response.amount, response.currency);
+  //     });
+  // }
+
+  // initiateRazorpayPayment(orderId: string, amount: number, currency: string) {
+  //   const options = {
+  //     key: 'YOUR_KEY_ID',
+  //     amount: amount,
+  //     currency: currency,
+  //     name: 'Your Company Name',
+  //     description: 'Wallet Payment',
+  //     order_id: orderId,
+  //     handler: (response:any) => {
+  //       this.verifyPayment(response.razorpay_payment_id, response.razorpay_order_id, response.razorpay_signature);
+  //     },
+  //     prefill: {
+  //       name: 'Your Name',
+  //       email: 'your.email@example.com',
+  //       contact: '9999999999'
+  //     },
+  //     theme: {
+  //       color: '#F37254'
+  //     }
+  //   };
+
+  //   const rzp = new Razorpay(options);
+  //   rzp.open();
+  // }
+
+  // verifyPayment(paymentId: string, orderId: string, signature: string) {
+  //   this.auth.verifyPayment(paymentId, orderId, signature)
+  //     .subscribe((response:any) => {
+  //       if (response.status === 'Payment verified') {
+  //         alert('Payment Successful!');
+  //       } else {
+  //         alert('Payment Verification Failed!');
+  //       }
+  //     });
+  // }
+

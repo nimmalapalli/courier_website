@@ -11,6 +11,7 @@ export class authGuard  {
     if (!this.authService.IsLoggedin()) {
       return true;
     } else {
+     
       this.router.navigate(['/login']);
       return false;
     }

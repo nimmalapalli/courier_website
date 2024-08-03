@@ -2,7 +2,7 @@
 <h1 mat-dialog-title>payments</h1>
 
 <form action="" [formGroup]="paymentform">
-  <input type="text" formControlName="searchId" value="{{searchId}}">
+  <input type="text" formControlName="searchId" value="{{searchId}}" style="display: none;">
   <mat-form-field appearance="outline">
     <mat-label>Ammount</mat-label>
     <input matInput placeholder="Enter the ammount" formControlName="amount">

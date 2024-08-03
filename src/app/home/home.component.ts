@@ -44,6 +44,7 @@ export class HomeComponent {
   pageSizeOptions: number[] = [5, 10, 20];
   pageSize = 5;
   totalorders:any;
+  totalamount:any;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
  cards:any;
   private breakpointObserver = inject(BreakpointObserver);
@@ -56,23 +57,23 @@ export class HomeComponent {
       map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Total Ammount', cols: 4, rows: 1,totals:''},
+          { title: 'Total Revenue', cols: 4, rows: 1,totals:this.totalamount},
           { title: 'Total Orders', cols: 4, rows: 1 ,totals:this.totalorders},
-          { title: 'Card 3', cols: 4, rows: 1 ,totals:''},         
-          { title: 'Card 4', cols: 4, rows: 1,totals:''},
-          { title: 'Card 4', cols: 2, rows: 1,totals:''},
-          { title: 'Card 4', cols: 2, rows: 1,totals:''}
+          { title: 'Total Shipments', cols: 4, rows: 1 ,totals:''},         
+          { title: 'Misellenous shipment', cols: 4, rows: 1,totals:''},
+          { title: 'Overall graph', cols: 2, rows: 1,totals:''},
+          { title: 'Recent orders', cols: 2, rows: 1,totals:''}
         ];
       }
 
       return [
-        { title: 'Total Ammount', cols: 1, rows: 1,totals:'' },
+        { title: 'Total Revenue', cols: 1, rows: 1,totals:this.totalamount },
         { title: 'Total Orders', cols: 1, rows: 1 ,totals:this.totalorders},
-        { title: 'Card 3', cols: 1, rows: 1,totals:'' },
+        { title: 'Total Shipments', cols: 1, rows: 1,totals:'' },
         
-        { title: 'Card 4', cols: 1, rows: 1,totals:'' },
-        { title: 'Card 4', cols: 2, rows: 2,totals:'' },
-        { title: 'Card 4', cols: 2, rows: 2,totals:'' }
+        { title: 'Misellenous shipment', cols: 1, rows: 1,totals:'' },
+        { title: 'Overall graph', cols: 2, rows: 2,totals:'' },
+        { title: 'Recent orders', cols: 2, rows: 2,totals:'' }
       ];
     })
   );
@@ -91,13 +92,13 @@ isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Ha
       this.searchForm=this.sf.group({
         searchId:''
       })
-    
+   
     }
     ngOnInit(){
     this.getOrderlist();
     this.getProfile();
-   
-    
+  
+    this.getPayment()
     }
   
     getProfile(){
@@ -109,11 +110,18 @@ isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Ha
          this.searchForm.controls['searchId'].setValue(this.profileData._id)
          this.dataSource.filter =   this.profileData?._id;
     
-         const filteredRows = this.dataSource.filteredData;
-        this.totalorders = (filteredRows?.length)
+         const filteredRows1 = this.dataSource.filteredData;
+        this.totalorders = (filteredRows1?.length)
         this.getdata();
          console.log(this.totalorders);
-         
+         this.dataSource1.filter =   this.profileData?._id;
+   
+        const filteredRows = this.dataSource1.filteredData;
+
+        console.log(filteredRows);
+        this.totalamount= (filteredRows[0]?.amount + filteredRows[1]?.amount + filteredRows[2]?.amount +filteredRows[3]?.amount + filteredRows[4]?.amount + filteredRows[5]?.amount).toString()
+
+         console.log(this.totalamount)
         
       })
       } 
@@ -134,5 +142,37 @@ isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Ha
     })
     
    }
+
+
+ 
+   paymentData:any;
+   profile:any;
   
+  
+   dataSource1 = new MatTableDataSource<any>([]);
+ 
+
+ 
+ 
+ 
+ 
+
+     
+  getPayment(){
+   this.od.getallorders().subscribe((res:any)=>{
+     console.log(res);
+ this.paymentData=res;
+ 
+ 
+ this.dataSource1 = new MatTableDataSource<any>(res.data);
+ this.dataSource1.paginator = this.paginator;
+ 
+ 
+ 
+ 
+  
+   })
+   
+  }
+
 }

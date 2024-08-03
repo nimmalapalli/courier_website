@@ -40,6 +40,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 
 export class LoginComponent implements OnInit{
+  [x: string]: any;
   data:any;
   hide = true;
   loading$ = this.loader.loading$;

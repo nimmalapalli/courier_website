@@ -99,7 +99,7 @@ createWalletPayment(amount: number, currency: string, customerId: string, wallet
 }
 
 verifyPayment(paymentId: string, orderId: string, signature: string): Observable<any> {
-  return this.http.post<any>(`${this.baseapi}/callback`, {
+  return this.http.post<any>(`${this.baseapi}/api/callback`, {
     razorpay_payment_id: paymentId,
     razorpay_order_id: orderId,
     razorpay_signature: signature

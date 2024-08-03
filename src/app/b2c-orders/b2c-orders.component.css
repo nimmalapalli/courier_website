@@ -1,8 +1,6 @@
 
 
-tr:nth-child(even) {
-  background: #F5F5F5;
-}
+
 
 
 
@@ -11,11 +9,11 @@ tr:nth-child(even) {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-end;
-  padding: 2%;
+
 }
-.sbt-btn{
+/* .sbt-btn{
   margin: 10px;
-}
+} */
 .order-table{
   padding: 2%;
   width: 100%;

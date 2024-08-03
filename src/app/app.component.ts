@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -22,11 +22,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'regtech';
+  title = 'hola';
   loading$ = this.loader.loading$;
-  constructor(public loader:LoaderService,private auth:AuthService,private _snackBar: MatSnackBar) {
+  constructor(public loader:LoaderService,private auth:AuthService,private _snackBar: MatSnackBar,private router:Router) {
     this.loader.hide()
-    
+   
   }
 
 
@@ -46,9 +46,7 @@ connectionStatus!: string;
 
 
 ngOnInit(){
-  /**
-  * Get the online/offline status from browser window
-  */
+ 
 
 
   this.onlineEvent = fromEvent(window, 'online');
@@ -73,9 +71,7 @@ ngOnInit(){
 
 
 ngOnDestroy() {
-  /**
-  * Unsubscribe all subscriptions to avoid memory leak
-  */
+ 
   this.subscriptions.forEach(subscription => subscription.unsubscribe());
 }
 }

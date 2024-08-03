@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, HostBinding, OnInit, inject } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, HostBinding, OnInit, ViewChild, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import {  ActivatedRoute, NavigationStart, Route, Router, RouterModule, RouterOu
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
 import { NavbarService } from '../serices/navbar.service';
@@ -25,6 +25,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { B2cOrdersComponent } from '../b2c-orders/b2c-orders.component';import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MyorderService } from '../serices/myorder.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
 }
@@ -32,7 +36,7 @@ export interface DialogData {
   selector: 'app-nav',
   standalone: true,
   imports: [CommonModule, 
-  RouterOutlet, RouterModule,MatMenuModule,MatSidenavModule,RegisterComponent,MatIconModule,MatButtonModule,MatSidenavModule,MatToolbarModule,B2cOrdersComponent,MatTooltipModule,MatSlideToggleModule],
+  RouterOutlet, RouterModule,MatMenuModule,MatSidenavModule,RegisterComponent,MatIconModule,MatButtonModule,MatSidenavModule,MatToolbarModule,B2cOrdersComponent,MatTooltipModule,MatSlideToggleModule,MatFormFieldModule,ReactiveFormsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
@@ -47,12 +51,13 @@ export class NavComponent implements OnInit {
   user:any;
   navdata:any;
   paymentid:any;
+  totalamount:any;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
-    constructor(public dialog: MatDialog,private _snackBar: MatSnackBar, public nav: NavbarService,public nav1: Navbar2Service,private auth:AuthService,private router:Router,private overlay:OverlayContainer,public loader:LoaderService,private route:ActivatedRoute) {
+    constructor(public dialog: MatDialog,private _snackBar: MatSnackBar, public nav: NavbarService,public nav1: Navbar2Service,private auth:AuthService,private router:Router,private overlay:OverlayContainer,public loader:LoaderService,private route:ActivatedRoute,private od:MyorderService,private sf:FormBuilder) {
       this.user= this.auth.getCurrentUser()
       console.log(this.auth.getCurrentUser());
       this.data={_id:this.route.snapshot.params['_id']}
@@ -67,7 +72,8 @@ export class NavComponent implements OnInit {
         }
         
       });
-      this.getProfile()
+     
+     
       this.getnav();
     }
    
@@ -110,7 +116,7 @@ export class NavComponent implements OnInit {
   toggleOpenClosed() {
          this.isOpened = !this.isOpened;
   }
-  toggleOpenClose() {
+  toggleOpenClose1() {
     this.isOpen = !this.isOpen;
 }
 toggleCloseOpen() {
@@ -131,7 +137,7 @@ ngOnInit(): void {
 
     }
   )
-  
+ 
 
   }
   
@@ -139,13 +145,7 @@ ngOnInit(): void {
   @HostBinding('class') className = '';
   darkClassName = 'theme-dark';
   lightClassName = 'theme-light';
-  getProfile(){
-    this.auth.getprofile().subscribe((res:any)=>{
-      this.data=res['data'];
-       console.log(res)
-   
-    })
-    } 
+
 
     getnav(){
       this.auth.geNav().subscribe((res:any)=>{
@@ -160,4 +160,6 @@ ngOnInit(): void {
        this.paymentid =res
       })
     }
+
+
 }
